@@ -1,6 +1,7 @@
 package com.yupi.springbootinit.controller;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.google.gson.Gson;
 import com.yupi.springbootinit.annotation.AuthCheck;
 import com.yupi.springbootinit.common.BaseResponse;
@@ -22,6 +23,11 @@ import com.yupi.springbootinit.service.UserService;
 import java.util.List;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,10 +38,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * 帖子接口
- *
- * @author <a href="https://github.com/liyupi">程序员鱼皮</a>
- * @from <a href="https://yupi.icu">编程导航知识星球</a>
  */
+@Api(tags = "帖子接口")
 @RestController
 @RequestMapping("/post")
 @Slf4j
@@ -58,6 +62,8 @@ public class PostController {
      * @param request
      * @return
      */
+    @ApiOperationSupport(author = "dabing")
+    @ApiOperation(value = "添加帖子")
     @PostMapping("/add")
     public BaseResponse<Long> addPost(@RequestBody PostAddRequest postAddRequest, HttpServletRequest request) {
         if (postAddRequest == null) {

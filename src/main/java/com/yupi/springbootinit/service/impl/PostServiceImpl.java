@@ -261,6 +261,9 @@ public class PostServiceImpl extends ServiceImpl<PostMapper, Post> implements Po
         return postVO;
     }
 
+    /**
+     * 将post信息读取，转换成postVo信息
+     */
     @Override
     public Page<PostVO> getPostVOPage(Page<Post> postPage, HttpServletRequest request) {
         List<Post> postList = postPage.getRecords();
